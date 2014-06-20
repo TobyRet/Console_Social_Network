@@ -8,12 +8,8 @@ class Action
   end
 
   def post(message)
-    @messages << { post: message, date: post_date }
+    @messages << { post: message, time: Time.new }
     puts @messages
-  end
-
-  def post_date
-    DateTime.now.strftime("%Y%m%dT%H%M%S")
   end
 
 end
