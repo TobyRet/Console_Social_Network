@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'pg'
+#gem 'pg'
+gem 'timecop'
+gem 'rspec'
 
-group :development, :test do
-  gem 'rspec'
-end
+#group :development, :test do
+#  gem 'rspec'
+#end
