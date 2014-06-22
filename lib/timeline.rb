@@ -6,8 +6,11 @@ class Timeline
   end
 
   def view
-    "#{ @messages[0] } (5 minutes ago)"
+    @messages.map { |message| "#{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)" }
   end
 
+  def time_ago(time_created)
+    ((Time.now - time_created) / 60).ceil
+  end
 
 end

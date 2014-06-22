@@ -9,7 +9,7 @@ describe 'User' do
 
     user = User.new('Alice')
     alice = Action.new(user)
-    time = Time.new #local(2014, 6, 6, 12, 0, 4)
+    time = Time.new
 
     Timecop.freeze(time)
 
