@@ -5,6 +5,8 @@ class Action
   attr_reader :messages
   attr_reader :subscriptions
 
+  @all_messages = []
+
   def initialize(user)
     @messages = []
     @subscriptions = []
@@ -12,12 +14,15 @@ class Action
   end
 
   def post(message)
-    @messages << { post: "#{@user.name} -> #{ message }", time: Time.new }
-    puts @messages
+    @messages << { user: "#{ @user.name }", post: "#{@user.name} -> #{ message }", time: Time.new }
   end
 
   def follow(person)
     User.users.each { |user| @subscriptions << person if person == user }
+  end
+
+  def self.all_messages
+    @all_messages << @messages
   end
 
 end

@@ -14,7 +14,7 @@ describe 'User' do
     Timecop.freeze(time)
 
     alice.post("I love the weather today")
-    expect(alice.messages).to eq([{ post: "Alice -> I love the weather today", time: time }])
+    expect(alice.messages).to eq([{ user: "Alice", post: "Alice -> I love the weather today", time: time }])
 
   end
 
@@ -34,7 +34,7 @@ describe 'User' do
     Timecop.freeze(time2)
     bob.post("Good game though.")
 
-    expect(bob.messages).to eq([{ post: "Bob -> Damn! We lost!", time: time1 }, { post: "Bob -> Good game though.", time: time2 }])
+    expect(bob.messages).to eq([{ user: "Bob", post: "Bob -> Damn! We lost!", time: time1 }, { user: "Bob", post: "Bob -> Good game though.", time: time2 }])
 
   end
 

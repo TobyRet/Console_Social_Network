@@ -1,6 +1,7 @@
 require 'spec_helper'
 require './lib/action'
 require './lib/user'
+require './lib/wall'
 
 describe 'following a user' do
 
@@ -23,17 +24,17 @@ describe 'following a user' do
   end
 
   it 'a user can follow another user' do
-
     expect(charlie.subscriptions).to eq(['Alice', 'Bob'])
-
   end
 
   it 'user can view an aggregated list of all subscribed posts' do
 
-    charlie_wall = Wall.new(user, messages, subscriptions)
+    charlie_messages = charlie.messages
+    charlie_subscriptions = charlie.subscriptions
+    charlie_wall = Wall.new(charlie, charlie_messages, charlie_subscriptions)
 
-    expect(charlie_wall.view).to eq(["I'm in New York today! Anyone wants to have a coffee?(0 minutes ago)", "I love the weather today (0 minutes ago)"])
-
+    expect(charlie_wall.view).to eq(["Charlie -> I'm in New York today! Anyone wants to have a coffee?(0 minutes ago)",
+                                     "Alice -> I love the weather today (0 minutes ago)"])
   end
 
 
