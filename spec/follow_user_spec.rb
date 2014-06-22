@@ -27,7 +27,7 @@ describe 'following a user' do
     expect(charlie.subscriptions).to eq(['Alice', 'Bob'])
   end
 
-  it 'user can view an aggregated list of all subscribed posts' do
+  xit 'user can view an aggregated list of all subscribed posts' do
 
     charlie_messages = charlie.messages
     charlie_subscriptions = charlie.subscriptions
