@@ -14,7 +14,7 @@ describe "Viewing a user's timeline" do
     alice_messages = alice.messages
     alice_timeline = Timeline.new(user, alice_messages)
 
-    expect(alice_timeline.view).to eq(["I love the weather today (0 minutes ago)"])
+    expect(alice_timeline.view).to eq(["Alice -> I love the weather today (0 minutes ago)"])
 
   end
 

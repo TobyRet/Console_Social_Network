@@ -12,18 +12,28 @@ describe 'following a user' do
   let(:bob) { Action.new(user2) }
   let(:charlie) { Action.new(user3) }
 
-  it 'a user can follow another user' do
+  before do
 
     charlie.follow('Alice')
     charlie.follow('Bob')
+
+    charlie.post("I'm in New York today! Anyone wants to have a coffee?")
+    alice.post("I love the weather today")
+
+  end
+
+  it 'a user can follow another user' do
 
     expect(charlie.subscriptions).to eq(['Alice', 'Bob'])
 
   end
 
-  xit 'can view an aggregated list of all subscriptions' do
-    charlie.post("I'm in New York today! Anyone wants to have a coffee?")
-    alice.post("I love the weather today")
+  it 'user can view an aggregated list of all subscribed posts' do
+
+    charlie_wall = Wall.new(user, messages, subscriptions)
+
+    expect(charlie_wall.view).to eq(["I'm in New York today! Anyone wants to have a coffee?(0 minutes ago)", "I love the weather today (0 minutes ago)"])
+
   end
 
 

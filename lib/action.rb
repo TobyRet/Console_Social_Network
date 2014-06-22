@@ -12,7 +12,8 @@ class Action
   end
 
   def post(message)
-    @messages << { post: message, time: Time.new }
+    @messages << { post: "#{@user.name} -> #{ message }", time: Time.new }
+    puts @messages
   end
 
   def follow(person)
