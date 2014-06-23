@@ -11,11 +11,7 @@ class Wall
   end
 
   def retrieve
-    result = Action.all_messages.flatten(1).select do |message|
-      message if message[:user] == @user.user.name || @user.subscriptions.include?(message[:user])
-    end
-
-    result.sort_by { |k| k[:time] }
+    Action.all_messages.flatten(1).select { |message| message if message[:user] == @user.user.name || @user.subscriptions.include?(message[:user]) }.sort_by { |k| k[:time] }
   end
 
   def time_ago(time_created)

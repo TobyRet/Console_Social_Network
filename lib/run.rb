@@ -55,6 +55,7 @@ end
 def wall(name)
   user = select_user(name)[0]
   user_wall = Wall.new(user)
+  puts user_wall.inspect
   user_wall.view
 end
 
