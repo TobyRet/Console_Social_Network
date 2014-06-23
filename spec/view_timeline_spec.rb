@@ -12,8 +12,6 @@ describe "User's timeline" do
 
     alice.post("I love the weather today")
     alice_messages = alice.messages
-    puts "*" * 50
-    puts alice_messages
     alice_timeline = Timeline.new(user, alice_messages)
 
     expect(alice_timeline.view).to eq(["I love the weather today (0 minutes ago)"])
