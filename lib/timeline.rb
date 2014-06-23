@@ -1,12 +1,16 @@
 class Timeline
 
-  def initialize(user, messages)
+  def initialize(user, messages = [])
     @messages = messages
     @user = user
   end
 
   def view
-    @messages.map { |message| "#{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)" }
+    if @messages.empty?
+      puts "This person has not posted any messages yet"
+    else
+      @messages.map { |message| puts "#{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)" }
+    end
   end
 
   def time_ago(time_created)

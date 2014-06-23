@@ -1,19 +1,22 @@
 require 'action'
 require 'user'
-require 'wall'
+require 'timeline'
 
-alice = User.new('Alice')
-bob = User.new('Bob')
-charlie = User.new('Charlie')
+user1 = User.new('Alice')
+user2 = User.new('Bob')
+user3 = User.new('Charlie')
+
+alice = Action.new(user1)
+bob = Action.new(user2)
+charlie = Action.new(user3)
+
+@users = [alice, bob, charlie]
 
 puts "User profiles loaded: Alice, Bob & Charlie"
 
 def process
   input = gets.chomp.split
-
   input[2] = input[2..-1].join(" ") if input.length > 3
-  puts input[2]
-
 
   if input.length == 1
     read(input[0])
@@ -25,18 +28,20 @@ def process
 
 end
 
-def read(query)
-  user = User.new(query)
-  user.name = Action.new(user)
+def read(name)
+  user = select_user(name)[0]
+  user_messages = user.messages
+  user_timeline = Timeline.new(user, user_messages)
   user_timeline.view
 end
 
-def post_message(person, message)
-  puts message
-  user = User.new(person)
-  human = Action.new(user)
-  x = human.post(message)
-  puts x
+def post_message(name, message)
+  user = select_user(name)[0]
+  user.post(message)
+end
+
+def select_user(name)
+  @users.select { |user| user if user.user.name == name }
 end
 
 loop do

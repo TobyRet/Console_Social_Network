@@ -4,6 +4,7 @@ class Action
 
   attr_reader :messages
   attr_reader :subscriptions
+  attr_reader :user
 
   @all_messages = []
 
