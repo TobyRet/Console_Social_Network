@@ -12,7 +12,7 @@ In the console run `irb -Ilib -rrun`
 ### Console commands
 
 1. Post a message: (user name) -> (message)
-2. Read abother person's messages: (user name)
+2. Read another person's messages: (user name)
 3. Follow another user: (user name) <em>follows</em> (another user)
 4. (COMING SOON) Read another user's feed (messages plus subscriptions): (user name) <em>wall</em>
 
