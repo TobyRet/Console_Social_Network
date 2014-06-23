@@ -24,5 +24,9 @@ Upon load, three user profiles are automatically created (Alice, Bob and Charlie
 2. Testing the user's interaction with the console. I've previously used Capybara to test user interaction with the browser, but got a little stumped when it came to coming up with a practical way to test the user's interaction with the console. Any pointers here would be greatly appreciated :-)
 
 
+### Known Bugs
+1. Time stamp needs to be singularized when post is less than a minute old
+
+
 
 
