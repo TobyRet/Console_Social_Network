@@ -9,7 +9,7 @@ class Timeline
     if @messages.empty?
       puts "This person has not posted any messages yet"
     else
-      @messages.map { |message| puts "#{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)" }
+      @messages.map { |message| "#{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)" }
     end
   end
 
