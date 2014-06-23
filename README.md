@@ -7,7 +7,8 @@ Upon load, three user profiles are automatically created (Alice, Bob and Charlie
 
 ### To run the application
 
-In the console run `irb -Ilib -rrun`
+1. Clone this repo
+2. In the console run `irb -Ilib -rrun`
 
 ### Console commands
 
