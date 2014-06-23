@@ -22,8 +22,10 @@ def process
     read(input[0])
   elsif input[1] == "->"
     post_message(input[0], input[2])
+  elsif input[1] == "follows"
+    follow(input[0], input[2])
   else
-    puts "nothing"
+    puts "Sorry I don't understand that command. Please check instructions in this application's README file"
   end
 
 end
@@ -38,6 +40,12 @@ end
 def post_message(name, message)
   user = select_user(name)[0]
   user.post(message)
+end
+
+def follow(name, target)
+  user = select_user(name)[0]
+  user.follow(target)
+  puts user.inspect
 end
 
 def select_user(name)
