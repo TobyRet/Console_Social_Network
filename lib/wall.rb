@@ -1,25 +1,23 @@
 class Wall
 
-  def initialize( user, messages, subscriptions )
+  def initialize(user)
     @user = user
-    @messages = messages
-    @subscriptions = subscriptions
   end
 
   def view
-    own_messages
-    subscription_messages
-  end
-
-  def own_messages
-    @messages.map { |message| "#{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)" }
-  end
-
-  def subscription_messages
-    @suscriptions.map do |subscription|
-
+    retrieve.map do |message|
+      "#{message[:user]} - #{message[:post]} (#{ time_ago(message[:time]) } minutes ago)"
     end
+  end
 
+  def retrieve
+    Action.all_messages.flatten(1).select do |message|
+      message if message[:user] == @user.user.name || @user.subscriptions.include?(message[:user])
+    end
+  end
+
+  def time_ago(time_created)
+    ((Time.now - time_created) / 60).ceil
   end
 
 end

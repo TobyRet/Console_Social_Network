@@ -2,11 +2,9 @@ require './lib/user'
 
 class Action
 
-  attr_reader :messages
-  attr_reader :subscriptions
-  attr_reader :user
+  attr_reader :messages, :subscriptions, :user, :all_messages
 
-  @all_messages = []
+  @@all_messages = []
 
   def initialize(user)
     @messages = []
@@ -16,6 +14,7 @@ class Action
 
   def post(message)
     @messages << { user: "#{ @user.name }", post: "#{ message }", time: Time.new }
+    @@all_messages << @messages
   end
 
   def follow(person)
@@ -23,7 +22,7 @@ class Action
   end
 
   def self.all_messages
-    @all_messages << @messages
+    @@all_messages
   end
 
 end
