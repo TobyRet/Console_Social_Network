@@ -40,12 +40,13 @@ end
 def post_message(name, message)
   user = select_user(name)[0]
   user.post(message)
+  puts "* #{ name } has posted the following message: #{ message } *"
 end
 
 def follow(name, target)
   user = select_user(name)[0]
   user.follow(target)
-  puts user.inspect
+  puts "* #{ name } is now following #{ target } *"
 end
 
 def select_user(name)
