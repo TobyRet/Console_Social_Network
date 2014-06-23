@@ -1,6 +1,7 @@
 require 'action'
 require 'user'
 require 'timeline'
+require 'wall'
 
 user1 = User.new('Alice')
 user2 = User.new('Bob')
@@ -24,6 +25,8 @@ def process
     post_message(input[0], input[2])
   elsif input[1] == "follows"
     follow(input[0], input[2])
+  elsif input[1] == "wall"
+    wall(input[0])
   else
     puts "Sorry I don't understand that command. Please check instructions in this application's README file"
   end
@@ -47,6 +50,12 @@ def follow(name, target)
   user = select_user(name)[0]
   user.follow(target)
   puts "* #{ name } is now following #{ target } *"
+end
+
+def wall(name)
+  user = select_user(name)[0]
+  user_wall = Wall.new(user)
+  user_wall.view
 end
 
 def select_user(name)
