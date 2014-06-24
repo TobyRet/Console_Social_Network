@@ -2,8 +2,6 @@
 
 This application runs a simple console-based social network. The funcitonality provided is similiar to Twitter.
 
-Upon load, three user profiles are automatically created (Alice, Bob and Charlie).
-
 
 ### To run the application
 
