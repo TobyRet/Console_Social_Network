@@ -14,7 +14,7 @@ class Action
 
   def post(message)
     @messages << { user: "#{ @user.name }", post: "#{ message }", time: Time.new }
-    @@all_messages << @messages
+    @@all_messages << { user: "#{ @user.name }", post: "#{ message }", time: Time.new }
   end
 
   def follow(person)
