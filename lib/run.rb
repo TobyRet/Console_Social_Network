@@ -20,15 +20,15 @@ def process
   elsif input.length == 1
     user_name = "#{ input[0] }"
     check_user(user_name)
-    read(@user_do)
+    read(@current_user)
   elsif input[1] == "follows"
     user_name = "#{ input[0] }"
     check_user(user_name)
-    follow(@user_do, input[2])
+    follow(@current_user, input[2])
   elsif input[1] == "wall"
     user_name = "#{ input[0] }"
     check_user(user_name)
-    wall(@user_do)
+    wall(@current_user)
   else
     puts "Sorry I don't understand that command. Please check instructions in this application's README file"
   end
@@ -48,7 +48,7 @@ end
 
 def follow(user, target)
   user.follow(target)
-  puts "* #{ name } is now following #{ target } *"
+  puts "* #{ user.user.name } is now following #{ target } *"
 end
 
 def wall(user)

@@ -1,5 +1,0 @@
-require 'spec_helper'
-require './lib/timeline'
-require './lib/user'
-require './lib/action'
-require './lib/wall'
