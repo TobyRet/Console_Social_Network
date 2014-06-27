@@ -13,8 +13,11 @@ describe "User's timeline" do
     alice.post("I love the weather today")
     alice_messages = alice.messages
     alice_timeline = Timeline.new(user, alice_messages)
+    receiver = double()
+    alice_timeline.view.receiver = receiver
 
-    expect(alice_timeline.view).to eq(["I love the weather today (0 minutes ago)"])
+    expect(receiver).to receive(:puts).with(alice_timeline)
+    expect(alice_timeline.view).to eq("I love the weather today (0 minutes ago)")
 
   end
 
