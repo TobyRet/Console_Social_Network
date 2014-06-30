@@ -1,16 +1,25 @@
 class User
 
-  attr_reader :name
+  attr_reader :name, :messages
 
-  @@all_users = []
+  @@all_messages = []
 
   def initialize(name)
     @name = name
-    @@all_users << @name
+    @messages = []
   end
 
-  def self.users
-    @@all_users
+  def post(message)
+    @@all_messages << { user: "#{ @name }", post: "#{ message }", time: Time.new }
+    @messages << { user: "#{ @name }", post: "#{ message }", time: Time.new }
+  end
+
+  def follow(person)
+    User.users.each { |user| @subscriptions << person if person == user }
+  end
+
+  def self.all_messages
+    @@all_messages
   end
 
 end
