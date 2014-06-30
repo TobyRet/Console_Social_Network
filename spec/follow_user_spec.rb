@@ -1,12 +1,11 @@
 require 'spec_helper'
+require_relative './helpers/users.rb'
 require './lib/user'
 require './lib/wall'
 
 describe 'following a user' do
 
-  let!(:alice) { User.new('Alice') }
-  let!(:bob) { User.new('Bob') }
-  let!(:charlie) { User.new('Charlie') }
+  build_users
 
   before do
 
@@ -16,8 +15,6 @@ describe 'following a user' do
   end
 
   it 'a user can follow another user' do
-
-    puts User.all_users
 
     charlie.follow('Alice')
     charlie.follow('Bob')
