@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './lib/user'
-#require './lib/action'
 require 'timecop'
 
 describe 'User' do
@@ -8,7 +7,6 @@ describe 'User' do
   it 'can publish a message' do
 
     alice = User.new('Alice')
-    #alice = Action.new(user)
     time = Time.new
 
     Timecop.freeze(time)
@@ -18,10 +16,9 @@ describe 'User' do
 
   end
 
-  xit 'can post mulitple messages' do
+  it 'can post mulitple messages' do
 
-    user = User.new('Bob')
-    bob = Action.new(user)
+    bob = User.new('Bob')
 
     time1 = Time.new
     Timecop.freeze(time1)
