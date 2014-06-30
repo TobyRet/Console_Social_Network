@@ -6,12 +6,20 @@ class Wall
 
   def view
     retrieve.map do |message|
-      puts "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)"
+      "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)"
     end
   end
 
   def retrieve
-    Action.all_messages.flatten(1).select { |message| message if message[:user] == @user.user.name || @user.subscriptions.include?(message[:user]) }.sort_by { |k| k[:time] }
+    User.all_messages.flatten(1).select { |message| message if match_user(message) || match_following(message) }.sort_by { |k| k[:time] }
+  end
+
+  def match_user(message)
+    message[:user] == @user.name
+  end
+
+  def match_following(message)
+    @user.following.include?(message[:user])
   end
 
   def time_ago(time_created)

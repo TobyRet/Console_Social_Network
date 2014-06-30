@@ -1,17 +1,11 @@
 require 'spec_helper'
 require './lib/user'
-require './lib/action'
 require './lib/wall'
+require_relative './helpers/users.rb'
 
 describe 'wall' do
 
-  let!(:user1) { User.new('Alice') }
-  let!(:user2) { User.new('Bob') }
-  let!(:user3) { User.new('Charlie') }
-
-  let(:alice) { Action.new(user1) }
-  let(:bob) { Action.new(user2) }
-  let(:charlie) { Action.new(user3) }
+  build_users
 
   before do
 
@@ -24,8 +18,7 @@ describe 'wall' do
 
   end
 
-  # test deactivated as charlie_wall.view returning ;nil; because of the necessary 'puts' method required to print to console (?)
-  xit 'user can view an aggregated list of all subscribed posts' do
+  it 'user can view an aggregated list of all subscribed posts' do
 
     charlie_wall = Wall.new(charlie)
 
