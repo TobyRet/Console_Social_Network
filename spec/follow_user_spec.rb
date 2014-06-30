@@ -1,17 +1,12 @@
 require 'spec_helper'
-require './lib/action'
 require './lib/user'
 require './lib/wall'
 
 describe 'following a user' do
 
-  let!(:user1) { User.new('Alice') }
-  let!(:user2) { User.new('Bob') }
-  let!(:user3) { User.new('Charlie') }
-
-  let(:alice) { Action.new(user1) }
-  let(:bob) { Action.new(user2) }
-  let(:charlie) { Action.new(user3) }
+  let!(:alice) { User.new('Alice') }
+  let!(:bob) { User.new('Bob') }
+  let!(:charlie) { User.new('Charlie') }
 
   before do
 
@@ -22,10 +17,12 @@ describe 'following a user' do
 
   it 'a user can follow another user' do
 
+    puts User.all_users
+
     charlie.follow('Alice')
     charlie.follow('Bob')
 
-    expect(charlie.subscriptions).to eq(['Alice', 'Bob'])
+    expect(charlie.following).to eq(['Alice', 'Bob'])
 
   end
 
