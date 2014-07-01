@@ -6,7 +6,7 @@ class Wall
 
   def view
     retrieve.map do |message|
-      "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) } minutes ago)"
+      "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) })"
     end
   end
 
@@ -23,7 +23,12 @@ class Wall
   end
 
   def time_ago(time_created)
-    ((Time.now - time_created) / 60).ceil
+    timestamp = Time.now - time_created
+    if timestamp <= 60
+      "#{ timestamp } seconds ago"
+    else
+      "#{ (timestamp / 60).ceil } minutes ago"
+    end
   end
 
 end
