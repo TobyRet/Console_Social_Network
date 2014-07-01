@@ -16,17 +16,12 @@ This application runs a simple console-based social network. The funcitonality p
 3. Follow another user: (user name) <em>follows</em> (another user)
 4. Read another user's feed (messages plus subscriptions): (user name) <em>wall</em>
 
-### Areas for Improvement & Challenges
+### Updates 1 July 2014
 
-1. Freezing time... It was my first time using the Timecop gem and I only scraped the surface in terms of what it can do. I think this is an area I would benefit from further practice. 
-
-2. Testing the user's interaction with the console. I've previously used Capybara to test user interaction with the browser, but got a little stumped when it came to coming up with a practical way to test the user's interaction with the console. Any pointers here would be greatly appreciated :-)
-
-3. I will revisit the code and refactor where possible.
-
-
-### Known Bugs
-1. Time stamp needs to be singularized when post is less than a minute old
+1. Timecop gem now correctly freezing time for rspec tests
+2. Posts now returning correctly formatted timestamps (minutes ago or seconds ago)
+3. User and Action class combined
+4. Factories created for users
 
 
 
