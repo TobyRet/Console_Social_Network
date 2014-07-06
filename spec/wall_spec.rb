@@ -31,9 +31,7 @@ describe 'wall' do
 
     charlie_wall = Wall.new(charlie)
 
-    expect(charlie_wall.view).to eq(["Charlie - I'm in New York today! Anyone wants to have a coffee? (30 seconds ago)",
-                                     "Alice - I love the weather today (30 seconds ago)",
-                                     "Bob - Damn! We lost! (30 seconds ago)"])
+    expect(charlie_wall.view).to eq(["Charlie - I'm in New York today! Anyone wants to have a coffee? (30 seconds ago)", "Alice - I love the weather today (30 seconds ago)", "Bob - Damn! We lost! (30 seconds ago)"])
 
     Timecop.return
   end

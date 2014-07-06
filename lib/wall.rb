@@ -5,6 +5,7 @@ class Wall
   end
 
   def view
+    puts retrieve.inspect
     retrieve.map do |message|
       "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) })"
     end

@@ -1,4 +1,3 @@
-require 'action'
 require 'user'
 require 'timeline'
 require 'wall'
@@ -37,18 +36,18 @@ end
 
 def post_message(user, message)
   user.post(message)
-  puts "* #{ user.user.name } has posted the following message: #{ message } *"
+  puts "* #{ user.name } has posted the following message: #{ message } *"
 end
 
 def read(user)
   user_messages = user.messages
-  user_timeline = Timeline.new(user, user_messages)
-  user_timeline.view
+  user_timeline = Timeline.new(user_messages)
+  puts user_timeline.view
 end
 
 def follow(user, target)
   user.follow(target)
-  puts "* #{ user.user.name } is now following #{ target } *"
+  puts "* #{ user.name } is now following #{ target } *"
 end
 
 def wall(user)
@@ -60,8 +59,7 @@ def check_user(username)
   if !@all_users.include?(username)
     @all_users << username
     @user = User.new(username)
-    @user_do = Action.new(@user)
-    @active_users << @user_do
+    @active_users << @user
     @current_user = select_current_user(username)
   else
     @current_user = select_current_user(username)
@@ -69,7 +67,7 @@ def check_user(username)
 end
 
 def select_current_user(username)
-  @active_users.select { |active_user| active_user if active_user.user.name == username }[0]
+  @active_users.select { |active_user| active_user if active_user.name == username }[0]
 end
 
 loop do
