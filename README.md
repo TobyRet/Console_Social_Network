@@ -1,6 +1,6 @@
 # Console-based Social Network
 
-This application runs a simple console-based social network. The funcitonality provided is similiar to Twitter.
+This application runs a simple console-based social network. The funcitonality provided is similar to Twitter.
 
 
 ### To run the application
