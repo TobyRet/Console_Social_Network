@@ -17,7 +17,7 @@ class Timeline
     if timestamp <= 60
       "#{ timestamp.round } seconds ago"
     else
-      "#{ (timestamp / 60).ceil } minutes ago"
+      "#{ (timestamp / 60).round } minutes ago"
     end
   end
 

@@ -5,7 +5,6 @@ class Wall
   end
 
   def view
-    puts retrieve_sorted
     retrieve_sorted.map { |message| "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) })" }
   end
 
