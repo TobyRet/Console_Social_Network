@@ -14,7 +14,6 @@ class Timeline
 
   def time_ago(time_created)
     timestamp = Time.now - time_created
-    puts timestamp
     if timestamp <= 60
       "#{ timestamp } seconds ago"
     else

@@ -13,8 +13,9 @@ class User
   end
 
   def post(message)
-    @@all_messages << { user: "#{ @name }", post: "#{ message }", time: Time.new }
-    @messages << { user: "#{ @name }", post: "#{ message }", time: Time.new }
+    formatted_message = { user: "#{ @name }", post: "#{ message }", time: Time.new }
+    @messages << formatted_message
+    @@all_messages << formatted_message
   end
 
   def follow(person)
