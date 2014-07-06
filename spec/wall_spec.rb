@@ -16,6 +16,10 @@ describe 'wall' do
 
     charlie.post("I'm in New York today! Anyone wants to have a coffee?")
     alice.post("I love the weather today")
+
+    Timecop.return
+
+    Timecop.travel(@time + 15)
     bob.post("Damn! We lost!")
 
     charlie.follow('Alice')
@@ -31,7 +35,7 @@ describe 'wall' do
 
     charlie_wall = Wall.new(charlie)
 
-    expect(charlie_wall.view).to eq(["Charlie - I'm in New York today! Anyone wants to have a coffee? (30 seconds ago)", "Alice - I love the weather today (30 seconds ago)", "Bob - Damn! We lost! (30 seconds ago)"])
+    expect(charlie_wall.view).to eq(["Bob - Damn! We lost! (15 seconds ago)", "Alice - I love the weather today (30 seconds ago)", "Charlie - I'm in New York today! Anyone wants to have a coffee? (30 seconds ago)"])
 
     Timecop.return
   end

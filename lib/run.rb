@@ -52,7 +52,7 @@ end
 
 def wall(user)
   user_wall = Wall.new(user)
-  user_wall.view
+  puts user_wall.view
 end
 
 def check_user(username)

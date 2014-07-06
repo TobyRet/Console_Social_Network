@@ -5,14 +5,16 @@ class Wall
   end
 
   def view
-    puts retrieve.inspect
-    retrieve.map do |message|
-      "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) })"
-    end
+    puts retrieve_sorted
+    retrieve_sorted.map { |message| "#{ message[:user] } - #{ message[:post] } (#{ time_ago(message[:time]) })" }
   end
 
-  def retrieve
-    User.all_messages.flatten(1).select { |message| message if match_user(message) || match_following(message) }.sort_by { |k| k[:time] }
+  def retrieve_sorted
+    retrieve_all.sort_by { |k| k[:time] }.reverse
+  end
+
+  def retrieve_all
+    User.all_messages.flatten(1).select { |message| message if match_user(message) || match_following(message) }
   end
 
   def match_user(message)
