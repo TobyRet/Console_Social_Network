@@ -23,6 +23,14 @@ This application runs a simple console-based social network. The funcitonality p
 3. User and Action class combined
 4. Factories created for users
 
+### Updates 6 July
+1. Posts are listed by most recent in wall and timeline
+2. Timecop #travel now used to displace time
+3. #puts methods extracted to run.rb
+
+To do
+1. Refactor run.rb
+
 
 
 
