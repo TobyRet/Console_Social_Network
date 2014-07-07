@@ -1,4 +1,8 @@
+require 'time_formatter'
+
 class Wall
+
+  include TimeFormatter
 
   def initialize(user)
     @user = user
@@ -22,15 +26,6 @@ class Wall
 
   def match_following(message)
     @user.following.include?(message[:user])
-  end
-
-  def time_ago(time_created)
-    timestamp = Time.now - time_created
-    if timestamp <= 60
-      "#{ timestamp.round } seconds ago"
-    else
-      "#{ (timestamp / 60).ceil } minutes ago"
-    end
   end
 
 end
